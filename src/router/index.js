@@ -4,23 +4,18 @@ const routes = [
   {
     path: "/",
     component: () => import("../views/home-page.vue"),
-    meta: {
-      title: "首页",
-    },
   },
   {
-    path: "/product-center",
+    path: "/product-center/:name",
     component: () => import("../views/product-center.vue"),
-    meta: {
-      title: "产品介绍",
-    },
+  },
+  {
+    path: "/product-center/:name/:id",
+    component: () => import("../views/product-detail.vue"),
   },
   {
     path: "/contact-us",
     component: () => import("../views/contact-us.vue"),
-    meta: {
-      title: "About us",
-    },
   },
   {
     path: "/nukon-admin",

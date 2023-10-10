@@ -83,13 +83,13 @@
         class="footer-box3 flex flex-col justify-between items-end"
         data-aos="fade-left"
       >
-        <p>400-8710-555</p>
+        <p>19520379048</p>
         <p>24-hour free service hotline</p>
         <div class="flex items-center">
           <img
             src="http://cdn.huaqu.club/img/e1a15dcbaa32f67fb0c6ec5b53b925ea1e5cd9a1662-XEsV4I.webp"
           />
-          niukang_wk@163.com
+          lui93522@gmail.com
         </div>
       </div>
     </div>

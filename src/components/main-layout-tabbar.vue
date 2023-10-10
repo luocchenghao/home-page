@@ -1,17 +1,16 @@
 <template>
   <div
-    class="flex overflow-x-auto overflow-y-hidden"
-    style="padding-bottom: 20px; border-bottom: 1px solid #909097"
+    class="flex overflow-x-auto overflow-y-hidden border-b"
+    style="padding-bottom: 20px"
   >
     <div
-      data-aos="fade-right"
       class="tabbar-item flex-none"
       :class="[curIndex === index ? 'actived' : '']"
       v-for="(item, index) in list"
       :key="index"
-      @click="$emit('changeBar', index)"
+      @click="$emit('changeBar', item.url)"
     >
-      {{ item }}
+      {{ item.title }}
     </div>
   </div>
 </template>

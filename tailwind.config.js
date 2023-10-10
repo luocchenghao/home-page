@@ -15,6 +15,7 @@ export default {
         450: "450px",
         220: "220px",
         90: "90px",
+        300: "300px",
       },
       minHeight: {
         100: "100px",

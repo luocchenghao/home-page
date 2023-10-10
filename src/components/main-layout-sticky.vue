@@ -8,7 +8,7 @@
       <a-tooltip placement="left" color="white">
         <template #title>
           <p class="font-semibold p-10" style="color: #4a4a53; font-size: 18px">
-            400-8710-555
+            19520379048
           </p>
         </template>
         <div class="common-flex">
@@ -22,7 +22,7 @@
       <a-tooltip placement="left" color="white">
         <template #title>
           <p class="font-semibold p-10" style="color: #4a4a53; font-size: 18px">
-            niukang_wk@163.com
+            lui93522@gmail.com
           </p>
         </template>
         <div class="common-flex">

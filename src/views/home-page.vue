@@ -15,7 +15,7 @@
             class="font-semibold text-28"
             style="color: #202131; line-height: 40px"
           >
-            产品推荐
+            Product recommendation
           </p>
         </div>
         <div class="flex">
@@ -57,7 +57,7 @@
             class="font-semibold text-28"
             style="color: #202131; line-height: 40px"
           >
-            产品分类
+            Product classification
           </p>
         </div>
         <div class="grid grid-cols-4">
@@ -83,7 +83,7 @@
         </div>
       </div>
       <div class="w-1280 m-auto flex items-center justify-between pt-80 pb-80">
-        <div class="flex flex-col w-450" data-aos="fade-left">
+        <div class="flex flex-col w-300" data-aos="fade-left">
           <div class="w-220 box-content flex h-48 about-box1">
             <img
               style="width: 28px"
@@ -100,21 +100,26 @@
               class="font-semibold text-28"
               style="color: #202131; line-height: 40px"
             >
-              纽康工程机械制造有限公司
+              HYJX Co., Ltd.
             </p>
           </div>
           <div class="about-box2 pb-40">
             <p>
-              Nukon is a young and dynamic organization composed of experienced
-              engineers and qualified personnel in design and production.
-              Machines and equipment such as fiber lasers, plasmas, water jets,
-              CNC flame cutting machines and loading and unloading systems have
-              been developed and put into the service industry.
+              HYJX Responsibility Co., Ltd. is a modern technology enterprise
+              specializing in the research and development of food processing
+              machinery manufacturing and mechanical equipment solutions. It is
+              committed to building food processing equipment with advanced
+              technology, excellent performance, precision and reliability, and
+              high cost performance.
             </p>
             <p>
-              In production, our priority goal is to increase the labor force
-              and produce convenient, fault-free and high-quality machines that
-              follow this technology.
+              Existing (representative products) and other equipment are sold
+              through sales channels to more than 30 cities in China, and
+              exported to dozens of countries and regions around the world. A
+              total of 10,000 sets of equipment have been sold and more than 500
+              customers around the world have been served. With advanced
+              equipment, excellent product quality and perfect after-sales
+              service, it has won wide praise from customers at home and abroad.
             </p>
           </div>
           <div class="flex about-box3 hover:cursor-pointer">

@@ -3,7 +3,7 @@
     <div class="w-1280 m-auto items-center flex flex-row h-90">
       <div class="w-263">
         <img
-          @click="handleTapRouter('/', '首页')"
+          @click="handleTapRouter('/', 'Home')"
           title="logo"
           src="http://cdn.huaqu.club/img/5e791bd92de56315901efbbbcbb75dafcfa932466d19-v3nPcH.webp"
           class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-300 hover:cursor-pointer"
@@ -14,21 +14,40 @@
       >
         <div class="flex-1 flex items-center">
           <div
-            class="text-hover text-black ml-100 hover:cursor-pointer"
+            style="font-size: 13px"
+            class="text-hover text-black hover:cursor-pointer flex-1 text-center px-10"
             v-for="item in routers"
             :key="item.url"
             @click="handleTapRouter(item.url, item.title)"
+            :class="{ active: activeComputed($route, item) }"
           >
-            {{ item.title }}
+            <a-dropdown
+              arrow
+              v-if="!whiteList.some((whiteItem) => whiteItem === item.title)"
+            >
+              <a>{{ item.title }} </a>
+              <template #overlay>
+                <a-menu>
+                  <a-menu-item
+                    v-for="childItem in item.children"
+                    :key="childItem.title"
+                    @click="
+                      handleTapRouter(
+                        childItem.url,
+                        childItem.title,
+                        item,
+                        true
+                      )
+                    "
+                  >
+                    {{ childItem.title }}
+                  </a-menu-item>
+                </a-menu>
+              </template>
+            </a-dropdown>
+            <span v-else>{{ item.title }}</span>
           </div>
         </div>
-        <!-- <div class="flex items-center hover:cursor-pointer">
-          <img
-            style="width: 24px; margin-right: 10px"
-            src="http://cdn.huaqu.club/img/b79b0d024ffb54f96cf763568a0fbf27ae0032976d7-7DYQdl.webp"
-          />
-          简体中文
-        </div> -->
       </div>
     </div>
   </div>
@@ -36,30 +55,54 @@
 
 <script setup>
 import { useRouter } from "vue-router";
+import useProductStore from "../store/product";
+import { routers } from "../utils";
+import { computed } from "vue";
 const router = useRouter();
-const routers = [
-  {
-    url: "/",
-    title: "Home",
-  },
-  {
-    url: "/product-center",
-    title: "Product center",
-  },
-  {
-    url: "/contact-us",
-    title: "About us",
-  },
-];
+const whiteList = ["Home", "About Us"];
+const activeComputed = computed(() => {
+  return (routeParams, item) => {
+    if (whiteList.some((whiteItem) => whiteItem === item.title)) {
+      return routeParams.path === item.url;
+    } else {
+      return (
+        routeParams.fullPath.includes(item.url) ||
+        item.children
+          .map(({ url }) => {
+            return routeParams.fullPath.includes(url);
+          })
+          .includes(true)
+      );
+    }
+  };
+});
 
-const handleTapRouter = (url, title) => {
-  router.push({ path: url });
+const handleTapRouter = (url, title, topItem, ifTop) => {
+  if (whiteList.some((item) => item === title)) {
+    router.push({ path: url });
+  } else {
+    router.push({ path: `/product-center${url}` });
+  }
+  if (ifTop) {
+    useProductStore().$patch((state) => {
+      (state.curPatientRoute = topItem.url),
+        (state.curPatientRouteTitle = topItem.title);
+    });
+  } else {
+    useProductStore().$patch((state) => {
+      (state.curPatientRoute = url), (state.curPatientRouteTitle = title);
+    });
+  }
+
   document.title = title;
 };
 </script>
 
 <style scoped>
 .text-hover:hover {
+  color: #0f5fd5;
+}
+.active {
   color: #0f5fd5;
 }
 </style>

@@ -28,25 +28,32 @@
             />
           </div>
           <div class="basis-1/2 flex flex-col px-40 justify-center bg-white">
-            <p class="title pb-40" data-aos="fade-left">
-              纽康工程机械制造有限公司
+            <p class="title pb-40" data-aos="fade-left">HYJX Co., Ltd.</p>
+            <p class="info" data-aos="fade-left">
+              HYJX Responsibility Co., Ltd. is a modern technology enterprise
+              specializing in the research and development of food processing
+              machinery manufacturing and mechanical equipment solutions. It is
+              committed to building food processing equipment with advanced
+              technology, excellent performance, precision and reliability, and
+              high cost performance. At the beginning of its establishment, it
+              integrates scientific research, manufacturing and sales. Since its
+              development, it has established a perfect scientific research and
+              innovation system, equipment production system and service
+              management system, and accumulated profound technical strength and
+              manufacturing experience.
             </p>
             <p class="info" data-aos="fade-left">
-              Nukon is a young and dynamic organization composed of experienced
-              engineers and qualified personnel in design and production.
-              Machines and equipment such as fiber lasers, plasmas, water jets,
-              CNC flame cutting machines and loading and unloading systems have
-              been developed and put into the service industry.
-            </p>
-            <p class="info" data-aos="fade-left">
-              In production, our priority goal is to increase the labor force
-              and produce convenient, fault-free and high-quality machines that
-              follow this technology.Nukon is a young and dynamic organization
-              composed of experienced engineers and qualified personnel in
-              design and production. Machines and equipment such as fiber
-              lasers, plasmas, water jets, CNC flame cutting machines and
-              loading and unloading systems have been developed and put into the
-              service industry.
+              Over the years, we have closely followed market development and
+              customer needs, continuously upgraded product technology and
+              service capabilities to help customers improve production
+              efficiency and reduce production costs to a greater extent.
+              Existing (representative products) and other equipment are sold
+              through sales channels to more than 30 cities in China, and
+              exported to dozens of countries and regions around the world. A
+              total of 10,000 sets of equipment have been sold and more than 500
+              customers around the world have been served. With advanced
+              equipment, excellent product quality and perfect after-sales
+              service, it has won wide praise from customers at home and abroad.
             </p>
           </div>
         </div>
@@ -94,14 +101,14 @@
               <img
                 src="http://cdn.huaqu.club/img/a786b2906ceb88988bb54c34b64614475fe9b39627e-A5cJGO.webp"
               />
-              400-8710-555
+              19520379048
             </div>
             <p>24-hour free service hotline</p>
             <div class="flex items-center">
               <img
                 src="http://cdn.huaqu.club/img/e1a15dcbaa32f67fb0c6ec5b53b925ea1e5cd9a1662-XEsV4I.webp"
               />
-              niukang_wk@163.com
+              lui93522@gmail.com
             </div>
           </div>
           <div data-aos="fade-left" class="basis-2/3">
