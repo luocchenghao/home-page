@@ -27,7 +27,7 @@
             {{ curEquiment.title }}
           </p>
         </div>
-        <div class="flex mt-20">
+        <div class="flex mt-20 bg-white">
           <div class="basis-1/2">
             <img
               data-aos="fade-right"
@@ -36,7 +36,7 @@
               "
             />
           </div>
-          <div class="basis-1/2 flex flex-col px-40 justify-center bg-white">
+          <div class="basis-1/2 flex flex-col p-40 justify-center bg-white">
             <div class="title" data-aos="fade-left">
               {{ curEquiment.title }}
             </div>

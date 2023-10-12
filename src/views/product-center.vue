@@ -46,8 +46,9 @@
           :cur-index="curSort"
           @change-bar="handleChangeBar"
         ></main-layout-tabbar>
-        <div class="grid grid-cols-4 gap-20 mt-20">
-          <template v-if="pageEquiment && pageEquiment.length > 0">
+
+        <template v-if="pageEquiment && pageEquiment.length > 0">
+          <div class="grid grid-cols-4 gap-20 mt-20">
             <div
               class="flex flex-col bg-white border cursor-pointer"
               v-for="(item, index) in pageEquiment"
@@ -77,8 +78,10 @@
                 </p>
               </div>
             </div>
-          </template>
-          <div v-else>暂无数据</div>
+          </div>
+        </template>
+        <div v-else style="width: 100%; padding: 40px 0; text-align: center">
+          no-data
         </div>
         <a-pagination
           style="margin-top: 20px; text-align: right"
@@ -116,7 +119,6 @@ const routeWatch = ref(null);
 const page = ref(1);
 const size = ref(8);
 const total = ref(0);
-const pageSize = ref(0);
 const pageEquiment = ref([]);
 
 onMounted(() => {
@@ -136,17 +138,9 @@ onMounted(() => {
       curSort.value = sortIndex > -1 ? sortIndex : 0;
       getEquimentList(curSort.value);
       total.value = curSortEquimentList.value.data.length;
-      pageSize.value = curSortEquimentList.value.data.length % size.value;
       pageEquiment.value = curSortEquimentList.value.data.slice(
-        page.value * (pageSize.value - 1),
+        (page.value - 1) * size.value,
         size.value * page.value
-      );
-      console.log(
-        page.value,
-        size.value,
-        pageSize.value,
-        total.value,
-        pageEquiment.value
       );
     }
   });
@@ -158,6 +152,7 @@ const handleSearchDetail = (index, item) => {
 };
 
 const handleChangeBar = (url) => {
+  page.value = 1;
   router.push({ path: `/product-center${url}` });
 };
 
