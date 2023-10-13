@@ -7,6 +7,7 @@ const useProductStore = defineStore(
     const equimentList = [
       {
         type: "fruit-and-vegetable-processing-equipment",
+        title: "Fruit And Vegetable Processing Equipment",
         data: [
           {
             type: "cutting-machine",
@@ -1233,6 +1234,7 @@ const useProductStore = defineStore(
       },
       {
         type: "meat-processing-equipment",
+        title: "Meat Processing Equipment",
         data: [
           {
             type: "meat-cutter",
@@ -2671,6 +2673,7 @@ const useProductStore = defineStore(
       },
       {
         type: "clean-vegetable-processing-equipment",
+        title: "Clean Vegetable Processing Equipment",
         data: [
           {
             type: "leafy-vegetable-processing",
@@ -3015,6 +3018,7 @@ const useProductStore = defineStore(
       },
       {
         type: "packaging-equipment",
+        title: "Packaging Equipment",
         data: [
           {
             type: "vacuum-packaging-machine",
@@ -3296,11 +3300,24 @@ const useProductStore = defineStore(
     const curEquiment = ref({});
     const curPatientRouteTitle = ref("");
 
-    const getEquimentList = (index) => {
+    const getEquimentList = (index, searchText) => {
       curEquimentList.value = equimentList.find(
         (item) => item.type === curPatientRoute.value.split("/")[1]
       ).data;
-      curSortEquimentList.value = curEquimentList.value[index];
+      if (searchText) {
+        curSortEquimentList.value = Object.assign(
+          {},
+          curEquimentList.value[index]
+        );
+        curSortEquimentList.value.data = curSortEquimentList.value.data.filter(
+          (item) => item.title.indexOf(searchText) > -1
+        );
+      } else {
+        curSortEquimentList.value = Object.assign(
+          {},
+          curEquimentList.value[index]
+        );
+      }
     };
 
     return {

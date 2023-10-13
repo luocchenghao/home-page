@@ -19,8 +19,11 @@
           </p>
         </div>
         <div class="flex">
-          <div class="basis-1/2">
-            <img data-aos="fade-up" :src="curInfo.imgUrl" />
+          <div class="basis-1/2 bg-white">
+            <img
+              data-aos="fade-up"
+              :src="getAssetUrl(curInfo.subType, curInfo.bannerPic)"
+            />
           </div>
           <div class="basis-1/2 flex flex-col px-40 justify-center bg-white">
             <!-- <div class="spec" data-aos="fade-up">
@@ -30,12 +33,18 @@
               {{ curInfo.title }}
             </div>
             <div class="info" data-aos="fade-up">
-              {{ curInfo.info }}
+              {{ curInfo.desc }}
             </div>
             <div
               class="detail flex items-center hover:cursor-pointer"
               data-aos="fade-up"
-              @click="handleTapDetail"
+              @click="
+                handleTapDetail(
+                  curInfo.topType,
+                  curInfo.topTitle,
+                  curInfo.subType
+                )
+              "
             >
               Learn more
               <img
@@ -80,7 +89,7 @@
             <div
               class="detail flex items-center hover:cursor-pointer p-20"
               data-aos="fade-up"
-              @click="handleTapDetail"
+              @click="handleTapDetail(item.topType, item.title, item.type)"
             >
               Learn more
               <img
@@ -170,7 +179,11 @@ import { ref } from "vue";
 import MainLayoutBanner from "../components/main-layout-banner.vue";
 import { getAssetUrl } from "../utils";
 import useProductStore from "../store/product";
+import { storeToRefs } from "pinia";
 
+const { curPatientRoute, curPatientRouteTitle } = storeToRefs(
+  useProductStore()
+);
 const { equimentList: allEquimentList } = useProductStore();
 const router = useRouter();
 const newsList = [
@@ -203,29 +216,42 @@ const equimentList = [
   {
     title: "Clean Vegetable Processing Equipment",
     type: "leafy-vegetable-processing",
+    topType: "/clean-vegetable-processing-equipment",
     image: "banner6",
   },
   {
     title: "Meat Processing Equipment",
     type: "bone-sawing-machine",
+    topType: "/meat-processing-equipment",
     image: "banner7",
   },
   {
     title: "Fruit And Vegetable Processing Equipmentfruit",
     type: "washing-machine",
+    topType: "/fruit-and-vegetable-processing-equipment",
     image: "banner4",
   },
   {
     title: "Packaging Equipment",
     type: "vacuum-packaging-machine",
+    topType: "/packaging-equipment",
     image: "banner4",
   },
 ];
 const curInfo = ref({});
 const num = Math.floor(Math.random() * 4);
-curInfo.value = allEquimentList[num].data[0].data[0];
-const handleTapDetail = () => {
-  router.push({ path: "/product-center" });
+curInfo.value = {
+  topType: `/${allEquimentList[num].type}`,
+  topTitle: allEquimentList[num].title,
+  subType: allEquimentList[num].data[0].type,
+  ...allEquimentList[num].data[0].data[0],
+};
+const handleTapDetail = (type, topTitle, subType) => {
+  curPatientRoute.value = type;
+  curPatientRouteTitle.value = topTitle;
+  router.push({
+    path: `/product-center/${subType}`,
+  });
 };
 </script>
 
@@ -244,8 +270,7 @@ const handleTapDetail = () => {
 .title {
   font-weight: 600;
   color: #202131;
-  line-height: 56px;
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 30px;
 }
 .info {

@@ -9,7 +9,7 @@
         Providing the best sheet metal processing solutions for the industry is
         our main commitment.
       </p>
-      <div class="banner-div">
+      <!-- <div class="banner-div">
         <input
           type="text"
           class="banner-input"
@@ -22,7 +22,7 @@
             src="http://cdn.huaqu.club/img/19e79f784b64e24742599bd858616f9c2085e201548-imlSUX.webp"
           />
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

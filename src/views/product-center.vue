@@ -32,6 +32,7 @@
             type="text"
             class="banner-input"
             placeholder="Please enter keywords to search."
+            v-model="searchText"
           />
           <div
             class="banner-div-icon flex justify-center items-center cursor-pointer"
@@ -41,56 +42,96 @@
             />
           </div>
         </div>
-        <main-layout-tabbar
-          :list="sortList"
-          :cur-index="curSort"
-          @change-bar="handleChangeBar"
-        ></main-layout-tabbar>
-
-        <template v-if="pageEquiment && pageEquiment.length > 0">
-          <div class="grid grid-cols-4 gap-20 mt-20">
-            <div
-              class="flex flex-col bg-white border cursor-pointer"
-              v-for="(item, index) in pageEquiment"
-              :key="index"
-              @click="handleSearchDetail(index, item)"
-            >
-              <div class="basis-1/2" style="padding: 0 10px">
-                <img
-                  data-aos="fade-out"
-                  :src="getAssetUrl(curSortEquimentList.type, item.bannerPic)"
-                />
-              </div>
-              <div class="basis-1/2 border-t" style="padding: 20px">
-                <h3
-                  data-aos="fade-out"
-                  class="text-ellipsis line-clamp-1"
-                  style="color: #222; line-height: 30px"
-                >
-                  {{ item.title }}
-                </h3>
-                <p
-                  data-aos="fade-out"
-                  class="text-ellipsis line-clamp-2"
-                  style="color: #999; font-size: 12px; line-height: 22px"
-                >
-                  use: {{ item.desc }}
-                </p>
+        <template v-if="searchText">
+          <template v-if="searchArr && searchArr.length > 0">
+            <div class="grid grid-cols-4 gap-20 mt-20">
+              <div
+                class="flex flex-col bg-white border cursor-pointer"
+                v-for="(item, index) in searchArr"
+                :key="index"
+                @click="handleSearchDetail(index, item)"
+              >
+                <div class="basis-1/2" style="padding: 0 10px">
+                  <img
+                    data-aos="fade-out"
+                    :src="getAssetUrl(curSortEquimentList.type, item.bannerPic)"
+                  />
+                </div>
+                <div class="basis-1/2 border-t" style="padding: 20px">
+                  <h3
+                    data-aos="fade-out"
+                    class="text-ellipsis line-clamp-1"
+                    style="color: #222; line-height: 30px"
+                  >
+                    {{ item.title }}
+                  </h3>
+                  <p
+                    data-aos="fade-out"
+                    class="text-ellipsis line-clamp-2"
+                    style="color: #999; font-size: 12px; line-height: 22px"
+                  >
+                    use: {{ item.desc }}
+                  </p>
+                </div>
               </div>
             </div>
+          </template>
+          <div v-else style="width: 100%; padding: 40px 0; text-align: center">
+            no-data
           </div>
         </template>
-        <div v-else style="width: 100%; padding: 40px 0; text-align: center">
-          no-data
-        </div>
-        <a-pagination
-          style="margin-top: 20px; text-align: center"
-          :current="page"
-          :total="total"
-          :defaultPageSize="size"
-          @change="handlePageChange"
-          show-less-items
-        />
+        <template v-else>
+          <main-layout-tabbar
+            :list="sortList"
+            :cur-index="curSort"
+            @change-bar="handleChangeBar"
+          ></main-layout-tabbar>
+
+          <template v-if="pageEquiment && pageEquiment.length > 0">
+            <div class="grid grid-cols-4 gap-20 mt-20">
+              <div
+                class="flex flex-col bg-white border cursor-pointer"
+                v-for="(item, index) in pageEquiment"
+                :key="index"
+                @click="handleSearchDetail(index, item)"
+              >
+                <div class="basis-1/2" style="padding: 0 10px">
+                  <img
+                    data-aos="fade-out"
+                    :src="getAssetUrl(curSortEquimentList.type, item.bannerPic)"
+                  />
+                </div>
+                <div class="basis-1/2 border-t" style="padding: 20px">
+                  <h3
+                    data-aos="fade-out"
+                    class="text-ellipsis line-clamp-1"
+                    style="color: #222; line-height: 30px"
+                  >
+                    {{ item.title }}
+                  </h3>
+                  <p
+                    data-aos="fade-out"
+                    class="text-ellipsis line-clamp-2"
+                    style="color: #999; font-size: 12px; line-height: 22px"
+                  >
+                    use: {{ item.desc }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </template>
+          <div v-else style="width: 100%; padding: 40px 0; text-align: center">
+            no-data
+          </div>
+          <a-pagination
+            style="margin-top: 20px; text-align: center"
+            :current="page"
+            :total="total"
+            :defaultPageSize="size"
+            @change="handlePageChange"
+            show-less-items
+          />
+        </template>
       </div>
     </div>
   </div>
@@ -120,29 +161,56 @@ const page = ref(1);
 const size = ref(8);
 const total = ref(0);
 const pageEquiment = ref([]);
+const searchArr = ref([]);
+const searchText = ref("");
+
+const handleGetSortData = () => {
+  const routeName = router.currentRoute.value.params.name;
+  if (curPatientRoute.value === "/" || curPatientRoute.value === "/contact-us")
+    return;
+  if (routeName) {
+    const target = routers.find((item) => item.url === curPatientRoute.value);
+    sortList.value = target.children;
+    const sortIndex = sortList.value
+      .map((item) => item.url)
+      .indexOf(`/${routeName}`);
+    curSort.value = sortIndex > -1 ? sortIndex : 0;
+    getEquimentList(curSort.value);
+    total.value = curSortEquimentList.value.data.length;
+    pageEquiment.value = curSortEquimentList.value.data.slice(
+      (page.value - 1) * size.value,
+      size.value * page.value
+    );
+  }
+};
+
+const handleGetSearchData = () => {
+  const routeName = router.currentRoute.value.params.name;
+  if (curPatientRoute.value === "/" || curPatientRoute.value === "/contact-us")
+    return;
+  if (routeName) {
+    if (!searchText.value) {
+      searchArr.value = [];
+      handleGetSortData();
+      return;
+    }
+    const target = routers.find((item) => item.url === curPatientRoute.value);
+    sortList.value = target.children;
+    const sortIndex = sortList.value
+      .map((item) => item.url)
+      .indexOf(`/${routeName}`);
+    curSort.value = sortIndex > -1 ? sortIndex : 0;
+    getEquimentList(curSort.value, searchText.value);
+    searchArr.value = curSortEquimentList.value.data;
+  }
+};
 
 onMounted(() => {
   routeWatch.value = watchEffect(() => {
-    const routeName = router.currentRoute.value.params.name;
-    if (
-      curPatientRoute.value === "/" ||
-      curPatientRoute.value === "/contact-us"
-    )
-      return;
-    if (routeName) {
-      const target = routers.find((item) => item.url === curPatientRoute.value);
-      sortList.value = target.children;
-      const sortIndex = sortList.value
-        .map((item) => item.url)
-        .indexOf(`/${routeName}`);
-      curSort.value = sortIndex > -1 ? sortIndex : 0;
-      getEquimentList(curSort.value);
-      total.value = curSortEquimentList.value.data.length;
-      pageEquiment.value = curSortEquimentList.value.data.slice(
-        (page.value - 1) * size.value,
-        size.value * page.value
-      );
-    }
+    handleGetSortData();
+  });
+  watchEffect(() => {
+    handleGetSearchData();
   });
 });
 
@@ -158,7 +226,6 @@ const handleChangeBar = (url) => {
 
 const handlePageChange = (p) => {
   page.value = p;
-  console.log(page.value);
 };
 
 onBeforeUnmount(() => {
