@@ -69,14 +69,10 @@
           src="http://cdn.huaqu.club/img/9158ddd4591197f8ab6307366f14edce88a7a8e55073-BxXOgt.webp"
         />
         <div class="text-white flex" style="justify-content: inherit">
-          <span
-            class="hover:cursor-pointer"
-            v-for="item in routers"
-            :key="item.url"
-            @click="handleTapRouter(item.url, item.title)"
-          >
-            {{ item.title }}
-          </span>
+          Our purpose
+        </div>
+        <div class="text-white flex" style="justify-content: inherit">
+          Integrity management, customer-centered and dedicated service
         </div>
       </div>
       <div
@@ -106,10 +102,6 @@ const routers = [
   {
     url: "/",
     title: "Home",
-  },
-  {
-    url: "/product-center",
-    title: "Product center",
   },
   {
     url: "/contact-us",

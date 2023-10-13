@@ -60,24 +60,34 @@
             Product classification
           </p>
         </div>
-        <div class="grid grid-cols-4">
+        <div class="grid grid-cols-4 gap-20">
           <div
-            class="relative text-white"
+            class="relative bg-white"
             v-for="(item, index) in equimentList"
             :key="index"
           >
             <img
               data-aos="fade-up"
-              style="width: 100%; height: 240px"
-              :src="item.image"
+              style="width: 100%; height: 350px"
+              :src="getAssetUrl(item.type, item.image)"
             />
             <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-260 min-h-100"
+              style="min-height: 80px; font-size: 20px; padding-bottom: 0"
+              class="border-t p-20"
             >
-              <p class="text-28 font-semibold" style="padding-bottom: 10px">
-                {{ item.title }}
-              </p>
-              <p class="text-sm">{{ item.info }}</p>
+              {{ item.title }}
+            </div>
+            <div
+              class="detail flex items-center hover:cursor-pointer p-20"
+              data-aos="fade-up"
+              @click="handleTapDetail"
+            >
+              Learn more
+              <img
+                style="height: 30px; padding-left: 10px"
+                src="http://cdn.huaqu.club/img/7d2c3a7762fad50501f07891c57f7a2686ffae7f12e-ODIlmX.webp
+"
+              />
             </div>
           </div>
         </div>
@@ -158,7 +168,10 @@
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import MainLayoutBanner from "../components/main-layout-banner.vue";
+import { getAssetUrl } from "../utils";
+import useProductStore from "../store/product";
 
+const { equimentList: allEquimentList } = useProductStore();
 const router = useRouter();
 const newsList = [
   {
@@ -188,57 +201,29 @@ const aboutInfo = [
 ];
 const equimentList = [
   {
-    title: "LKC-石材雕刻机",
-    info: "高性能模型，优先考虑鲁棒性、精度和可重复性。低偏转和差异化系统使PRCN在市场上独一无二。",
-    image:
-      "http://cdn.huaqu.club/img/d074631f81b6ef6184d6e10004ce02499049e69f3f860-z8jsR8.webp",
+    title: "Clean Vegetable Processing Equipment",
+    type: "leafy-vegetable-processing",
+    image: "banner6",
   },
   {
-    title: "NCK-铝板雕刻机",
-    info: "高度可配置的Quinadeira模型，适应不同的可选设备和高于平均水平的性能。",
-    image:
-      "http://cdn.huaqu.club/img/5defcce2cba3ffc29909e7fc6a6b61bedfe1e6d521958-aZQexg.webp",
+    title: "Meat Processing Equipment",
+    type: "bone-sawing-machine",
+    image: "banner7",
   },
   {
-    title: "BCKK-木工雕刻机",
-    info: "提供高水平的竞争力和效率。",
-    image:
-      "http://cdn.huaqu.club/img/e395aa9a173bae8f75d808981b2c0c00cfd17f9133dd1-uMQ7xg.webp",
+    title: "Fruit And Vegetable Processing Equipmentfruit",
+    type: "washing-machine",
+    image: "banner4",
   },
   {
-    title: "LC880-激光雕刻机",
-    info: "高性能模型，优先考虑鲁棒性、精度和可重复性。低偏转和差异化系统使PRCN在市场上独一无二。",
-    image:
-      "http://cdn.huaqu.club/img/07b640e714dd2453d37d6dbda164435fc69f7d513d916-13mFUT.webp",
-  },
-  {
-    title: "石碑雕刻机",
-    info: "高度可配置的Quinadeira模型，适应不同的可选设备和高于平均水平的性能。",
-    image:
-      "http://cdn.huaqu.club/img/fec333c379e59602ce2e1db9af4eece4a46aaaaf4b971-hmVvfj.webp",
-  },
-  {
-    title: "KOI-立体雕刻机",
-    info: "提供高水平的竞争力和效率。",
-    image:
-      "http://cdn.huaqu.club/img/6dd972066319b5bd84c0d5a12551852b566527032b32f-vnLCWe.webp",
-  },
-  {
-    title: "小型雕刻机",
-    info: "高性能模型，优先考虑鲁棒性、精度和可重复性。低偏转和差异化系统使PRCN在市场上独一无二。",
-    image:
-      "http://cdn.huaqu.club/img/b44516de0809f2cd8d73c0945e231f58d9ae288c31714-E95rwI.webp",
-  },
-  {
-    title: "泡沫木模雕刻机",
-    info: "高度可配置的Quinadeira模型，适应不同的可选设备和高于平均水平的性能。",
-    image:
-      "http://cdn.huaqu.club/img/32cfa468f73ff32de2bc35d16cc347e1419c5abd3bc99-mgI8Dk.webp",
+    title: "Packaging Equipment",
+    type: "vacuum-packaging-machine",
+    image: "banner4",
   },
 ];
 const curInfo = ref({});
-
-curInfo.value = newsList[0];
+const num = Math.floor(Math.random() * 4);
+curInfo.value = allEquimentList[num].data[0].data[0];
 const handleTapDetail = () => {
   router.push({ path: "/product-center" });
 };

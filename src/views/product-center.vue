@@ -84,7 +84,7 @@
           no-data
         </div>
         <a-pagination
-          style="margin-top: 20px; text-align: right"
+          style="margin-top: 20px; text-align: center"
           :current="page"
           :total="total"
           :defaultPageSize="size"

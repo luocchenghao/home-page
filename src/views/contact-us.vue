@@ -131,26 +131,28 @@ const corporateValues = ref([
   {
     picUrl:
       "http://cdn.huaqu.club/img/841258d18cb2636a6ebc989d97a557660ba3e4ee7c9ab-tXii8a.webp",
-    title: "我们的使命",
-    subTitle: "致力国家建设，共筑美好家园",
+    title: "Our mission",
+    subTitle:
+      "Committed to national construction and building a beautiful home together",
   },
   {
     picUrl:
       "http://cdn.huaqu.club/img/e017d9ed4ae247e9a0f7c0f37e2b094bedd0bd69aa9a1-lGKxum.webp",
-    title: "我们的愿景",
-    subTitle: "成为中国一流的工程机械服务商",
+    title: "Our vision",
+    subTitle:
+      "Become a first-class construction machinery service provider in China",
   },
   {
     picUrl:
       "http://cdn.huaqu.club/img/03f9c50f8bfb82c61504fb7fea288710e3fd8786e8728-RUuurS.webp",
-    title: "我们的理念",
-    subTitle: "客户满意才是我们存在的理由",
+    title: "Our philosophy",
+    subTitle: "Customer satisfaction is the reason for our existence.",
   },
   {
     picUrl:
       "http://cdn.huaqu.club/img/85c305713da31b8d04b4d0cb8b3a3bade3b97a1563c0d-BU9J64.webp",
-    title: "我们的宗旨",
-    subTitle: "诚信经营，以客户为中心",
+    title: "Our purpose",
+    subTitle: "Integrity management, customer-centered and dedicated service",
   },
 ]);
 </script>

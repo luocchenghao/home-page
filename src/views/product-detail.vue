@@ -67,7 +67,23 @@
             :cur-index="0"
           ></main-layout-tabbar>
           <div class="py-40">
-            <table class="table-auto w-full border-collapse border">
+            <table
+              class="table-auto w-full border-collapse border"
+              v-if="curEquiment.sort"
+            >
+              <tbody>
+                <tr v-for="(tdItem, index) in curEquiment.tech" :key="index">
+                  <td
+                    class="w-1/3 border text-center"
+                    v-for="(tdSubItem, subIndex) in tdItem"
+                    :key="tdSubItem"
+                  >
+                    {{ tdSubItem }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table-auto w-full border-collapse border" v-else>
               <tbody>
                 <tr v-for="tdItem in curEquiment.tech" :key="tdItem.key">
                   <td class="w-1/3 border text-center">
