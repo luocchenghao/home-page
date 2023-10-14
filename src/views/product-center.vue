@@ -201,12 +201,11 @@ const handleGetSearchData = () => {
 };
 
 onMounted(() => {
-  routeWatch.value = watchEffect(() => {
-    handleGetSortData();
-  });
-  watchEffect(() => {
-    handleGetSearchData();
-  });
+  handleGetSortData();
+});
+
+watchEffect(() => {
+  handleGetSearchData();
 });
 
 const handleSearchDetail = (index, item) => {
@@ -223,9 +222,9 @@ const handlePageChange = (p) => {
   page.value = p;
 };
 
-onBeforeUnmount(() => {
-  routeWatch.value();
-});
+// onBeforeUnmount(() => {
+//   routeWatch.value();
+// });
 </script>
 
 <style scoped>
