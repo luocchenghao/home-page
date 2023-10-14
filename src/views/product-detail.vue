@@ -1,8 +1,5 @@
 <template>
-  <main-layout-banner
-    :type="'product'"
-    :url="'http://cdn.huaqu.club/img/922246dc163f397bc3e4a034dff561a8d12516bf14f823-fCP888.webp'"
-  ></main-layout-banner>
+  <main-layout-banner :type="'product'" :url="'img7'"></main-layout-banner>
   <div class="mt-410">
     <div
       class="w-full"
@@ -142,18 +139,14 @@
       <div class="consult-info">
         <p>19520379048</p>
         <div class="flex items-center justify-center">
-          <img
-            src="http://cdn.huaqu.club/img/b925e6078b4bffbbaeaab8305be6ad99a985f3a47db-ttjLkD.webp"
-          />
+          <img :src="getNormalUrl('img10')" />
           24-hour free service hotline
         </div>
       </div>
       <div class="consult-info">
         <p>lui93522@gmail.com</p>
         <div class="flex items-center justify-center">
-          <img
-            src="http://cdn.huaqu.club/img/e1a15dcbaa32f67fb0c6ec5b53b925ea1e5cd9a1662-XEsV4I.webp"
-          />
+          <img :src="getNormalUrl('img11')" />
           Email
         </div>
       </div>
@@ -166,7 +159,7 @@ import { ref, h } from "vue";
 import mainLayoutBanner from "../components/main-layout-banner.vue";
 import useProductStore from "../store/product";
 import { storeToRefs } from "pinia";
-import { getAssetUrl } from "../utils";
+import { getAssetUrl, getNormalUrl } from "../utils";
 
 const { curEquiment, curSortEquimentList } = storeToRefs(useProductStore());
 const openMark = ref(false);
@@ -248,8 +241,7 @@ const handleConsultEquiment = () => {
 }
 .ant-modal-header {
   height: 130px;
-  background: url(http://cdn.huaqu.club/img/0aa9e82e32b6e5221aaddae449af20fcdb19810f4fac7-yAP2mZ.webp)
-    100% no-repeat !important;
+  background: rgb(15, 95, 213) !important;
   background-size: 100% 100% !important;
   display: flex;
   align-items: center;

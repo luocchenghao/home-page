@@ -1,11 +1,11 @@
 <template>
   <div class="fixed top-0 w-full z-10 bg-white border-b">
     <div class="w-1280 m-auto items-center flex flex-row h-90">
-      <div class="w-263">
+      <div class="w-220">
         <img
           @click="handleTapRouter('/', 'Home')"
           title="logo"
-          src="http://cdn.huaqu.club/img/5e791bd92de56315901efbbbcbb75dafcfa932466d19-v3nPcH.webp"
+          :src="getNormalUrl('img1')"
           class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-300 hover:cursor-pointer"
         />
       </div>
@@ -58,6 +58,8 @@ import { useRouter } from "vue-router";
 import useProductStore from "../store/product";
 import { routers } from "../utils";
 import { computed } from "vue";
+import { getNormalUrl } from "../utils";
+
 const router = useRouter();
 const whiteList = ["Home", "About Us"];
 const activeComputed = computed(() => {

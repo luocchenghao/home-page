@@ -12,10 +12,7 @@
           </p>
         </template>
         <div class="common-flex">
-          <img
-            src="http://cdn.huaqu.club/img/107397e3a56570a40e9c1a624fd5b4ffbe4b2dc7743-wi6JSV.webp
-"
-          />
+          <img :src="getNormalUrl('img23')" />
           Telephone
         </div>
       </a-tooltip>
@@ -26,10 +23,7 @@
           </p>
         </template>
         <div class="common-flex">
-          <img
-            style="height: 14px"
-            src="http://cdn.huaqu.club/img/76d526aa472d6c69243d9471a1993616d8bf4533213-POghKJ.webp"
-          />
+          <img style="height: 14px" :src="getNormalUrl('img24')" />
           Email
         </div>
       </a-tooltip>
@@ -38,8 +32,7 @@
       <img
         :style="{ transform: !transMark ? 'rotate(180deg)' : '' }"
         style="height: 10px"
-        src="http://cdn.huaqu.club/img/5b9b7ab05a97516ab4af50a8a2ae878b761d08d9283-H9vv7N.webp
-"
+        :src="getNormalUrl('img22')"
       />
     </div>
   </div>
@@ -47,7 +40,7 @@
 
 <script setup>
 import { ref } from "vue";
-
+import { getNormalUrl } from "../utils";
 const transMark = ref(true);
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="h-320 absolute left-0 top-90 w-full">
-    <img class="w-full h-full" data-aos="fade-up" :src="url" />
+    <img class="w-full h-full" data-aos="fade-up" :src="getNormalUrl(url)" />
     <div
       class="absolute top-86 -translate-x-1/2 left-1/2"
       v-if="type === 'home'"
@@ -9,25 +9,12 @@
         Providing the best sheet metal processing solutions for the industry is
         our main commitment.
       </p>
-      <!-- <div class="banner-div">
-        <input
-          type="text"
-          class="banner-input"
-          placeholder="Please enter keywords to search."
-        />
-        <div
-          class="banner-div-icon flex justify-center items-center cursor-pointer"
-        >
-          <img
-            src="http://cdn.huaqu.club/img/19e79f784b64e24742599bd858616f9c2085e201548-imlSUX.webp"
-          />
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
 
 <script setup>
+import { getNormalUrl } from "../utils";
 defineProps(["type", "url"]);
 </script>
 

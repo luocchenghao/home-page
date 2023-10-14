@@ -1,8 +1,5 @@
 <template>
-  <main-layout-banner
-    :url="'http://cdn.huaqu.club/img/94fda228795c01dab3a93faa49155bbc00476bc31aacf3-jG04kX.webp'"
-    :type="'home'"
-  ></main-layout-banner>
+  <main-layout-banner :url="'img2'" :type="'home'"></main-layout-banner>
   <div class="mt-410">
     <div class="w-full" style="background: #f4f8fb">
       <div class="w-1280 m-auto flex flex-col pt-80">
@@ -49,8 +46,7 @@
               Learn more
               <img
                 style="height: 30px; padding-left: 10px"
-                src="http://cdn.huaqu.club/img/7d2c3a7762fad50501f07891c57f7a2686ffae7f12e-ODIlmX.webp
-"
+                :src="getNormalUrl('img3')"
               />
             </div>
           </div>
@@ -94,8 +90,7 @@
               Learn more
               <img
                 style="height: 30px; padding-left: 10px"
-                src="http://cdn.huaqu.club/img/7d2c3a7762fad50501f07891c57f7a2686ffae7f12e-ODIlmX.webp
-"
+                :src="getNormalUrl('img3')"
               />
             </div>
           </div>
@@ -104,10 +99,7 @@
       <div class="w-1280 m-auto flex items-center justify-between pt-80 pb-80">
         <div class="flex flex-col w-300" data-aos="fade-left">
           <div class="w-220 box-content flex h-48 about-box1">
-            <img
-              style="width: 28px"
-              src="http://cdn.huaqu.club/img/844a3b0dcb0e7b81d0b4393165db85372eb75f962b3-joc0wS.webp"
-            />
+            <img style="width: 28px" :src="getNormalUrl('img4')" />
             Layout around the world
           </div>
           <div class="pb-40">
@@ -143,17 +135,11 @@
           </div>
           <div class="flex about-box3 hover:cursor-pointer">
             View all
-            <img
-              style="width: 24px"
-              src="http://cdn.huaqu.club/img/b6d76ca10d1fc57adab26585693e634322c62b53132-O0FDVk.webp"
-            />
+            <img style="width: 24px" :src="getNormalUrl('img6')" />
           </div>
         </div>
         <div data-aos="fade-left">
-          <img
-            style="width: 540px"
-            src="http://cdn.huaqu.club/img/74c8c2901dec6444159b66ace6f02ce2886a8cd9190bcd-15ZqNH.webp"
-          />
+          <img style="width: 540px" :src="getNormalUrl('img5')" />
         </div>
         <div class="flex flex-col" data-aos="fade-left">
           <div
@@ -177,7 +163,7 @@
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import MainLayoutBanner from "../components/main-layout-banner.vue";
-import { getAssetUrl } from "../utils";
+import { getAssetUrl, getNormalUrl } from "../utils";
 import useProductStore from "../store/product";
 import { storeToRefs } from "pinia";
 
@@ -186,15 +172,6 @@ const { curPatientRoute, curPatientRouteTitle } = storeToRefs(
 );
 const { equimentList: allEquimentList } = useProductStore();
 const router = useRouter();
-const newsList = [
-  {
-    imgUrl:
-      "http://cdn.huaqu.club/img/5141025c27e03e268bde95a23a997372f8f95f98197fe9-droQAW.webp",
-    title: "MAVIC - Precision Engraving Machine Tool",
-    spec: "Fine carving series",
-    info: "Selected brand accessories, heavy-duty fuselage structure, combined with German five-sided milling finishing, stable performance and quality assurance! The section of the processed product is smooth without burrs, and no secondary processing is required.",
-  },
-];
 const aboutInfo = [
   {
     nums: 2009,

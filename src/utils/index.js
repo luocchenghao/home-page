@@ -125,3 +125,7 @@ export const getAssetUrl = (fileName, url) => {
     import.meta.url
   ).href;
 };
+
+export const getNormalUrl = (url) => {
+  return new URL(`../assets/${url}.webp`, import.meta.url).href;
+};

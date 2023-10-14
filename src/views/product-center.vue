@@ -1,8 +1,5 @@
 <template>
-  <main-layout-banner
-    :type="'product'"
-    :url="'http://cdn.huaqu.club/img/922246dc163f397bc3e4a034dff561a8d12516bf14f823-fCP888.webp'"
-  ></main-layout-banner>
+  <main-layout-banner :type="'product'" :url="'img7'"></main-layout-banner>
   <div class="mt-410">
     <div
       class="w-full"
@@ -37,9 +34,7 @@
           <div
             class="banner-div-icon flex justify-center items-center cursor-pointer"
           >
-            <img
-              src="http://cdn.huaqu.club/img/19e79f784b64e24742599bd858616f9c2085e201548-imlSUX.webp"
-            />
+            <img :src="getNormalUrl('img8')" />
           </div>
         </div>
         <template v-if="searchText">
@@ -77,7 +72,7 @@
             </div>
           </template>
           <div v-else style="width: 100%; padding: 40px 0; text-align: center">
-            no-data
+            Stay tuned
           </div>
         </template>
         <template v-else>
@@ -121,7 +116,7 @@
             </div>
           </template>
           <div v-else style="width: 100%; padding: 40px 0; text-align: center">
-            no-data
+            Stay tuned
           </div>
           <a-pagination
             style="margin-top: 20px; text-align: center"
@@ -143,7 +138,7 @@ import mainLayoutBanner from "../components/main-layout-banner.vue";
 import mainLayoutTabbar from "../components/main-layout-tabbar.vue";
 import { useRouter } from "vue-router";
 import useProductStore from "../store/product";
-import { routers, getAssetUrl } from "../utils";
+import { routers, getAssetUrl, getNormalUrl } from "../utils";
 import { storeToRefs } from "pinia";
 
 const {
