@@ -8,7 +8,7 @@
       <a-tooltip placement="left" color="white">
         <template #title>
           <p class="font-semibold p-10" style="color: #4a4a53; font-size: 18px">
-            19520379048
+            008619520379048
           </p>
         </template>
         <div class="common-flex">
@@ -25,6 +25,18 @@
         <div class="common-flex">
           <img style="height: 14px" :src="getNormalUrl('img24')" />
           Email
+        </div>
+      </a-tooltip>
+      <a-tooltip placement="left" color="white">
+        <template #title>
+          <img style="width: 150px" :src="getNormalUrl('img25')" />
+        </template>
+        <div class="common-flex">
+          <img
+            style="height: 24px; margin-bottom: 0"
+            :src="getNormalUrl('img26')"
+          />
+          Wechat
         </div>
       </a-tooltip>
     </div>

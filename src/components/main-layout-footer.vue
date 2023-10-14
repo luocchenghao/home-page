@@ -63,7 +63,7 @@
         class="footer-box3 flex flex-col justify-between items-end"
         data-aos="fade-left"
       >
-        <p>19520379048</p>
+        <p>008619520379048</p>
         <p>24-hour free service hotline</p>
         <div class="flex items-center">
           <img :src="getNormalUrl('img11')" />
